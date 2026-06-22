@@ -48,18 +48,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
+            <Link href="/" className="flex items-center group">
               <LogoID
-                size={48}
-                className="group-hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.7)] transition-all duration-300"
+                size={26}
+                className="group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.5)] transition-all duration-300"
               />
-              <span
-                className="text-2xl tracking-[0.05em] leading-none"
-                style={{ fontFamily: "var(--font-bebas)" }}
-              >
-                <span className="text-[#D4AF37]">ID</span>
-                <span className="text-white">BARBER</span>
-              </span>
             </Link>
 
             {/* Desktop nav */}

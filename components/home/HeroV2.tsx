@@ -72,25 +72,25 @@ export default function HeroV2() {
       {/* Entrance overlay */}
       <div ref={overlayRef} className="absolute inset-0 z-20 bg-black pointer-events-none" />
 
-      {/* BG video placeholder — replace src with real 4K video */}
+      {/* BG video 4K */}
       <div className="hero-bg-layer absolute inset-[-4%]">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          poster="/images/hero/hero-bg.svg"
-        >
-          {/* <source src="/videos/hero.mp4" type="video/mp4" /> */}
-        </video>
-        {/* Fallback static bg */}
+        {/* Fallback static bg (debajo del video) */}
         <div
           className="absolute inset-0"
           style={{
             background: "radial-gradient(ellipse 80% 60% at 60% 40%, #1a1200 0%, #0A0A0A 50%, #000 100%)",
           }}
         />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Layered overlays */}
@@ -145,9 +145,9 @@ export default function HeroV2() {
 
       {/* MAIN CONTENT */}
       <div className="relative z-[10] text-center px-4 max-w-6xl w-full">
-        {/* Logo monogram */}
+        {/* Wordmark */}
         <div className="flex justify-center mb-8">
-          <LogoID size={90} className="drop-shadow-[0_0_40px_rgba(212,175,55,0.5)]" />
+          <LogoID size={56} className="drop-shadow-[0_0_40px_rgba(255,255,255,0.25)]" />
         </div>
 
         {/* Tag */}

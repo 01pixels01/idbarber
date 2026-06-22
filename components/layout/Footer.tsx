@@ -9,12 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <LogoID size={52} />
-              <span className="text-2xl tracking-[0.05em] leading-none" style={{ fontFamily: "var(--font-bebas)" }}>
-                <span className="text-[#D4AF37]">ID</span>
-                <span className="text-white">BARBER</span>
-              </span>
+            <div className="flex items-center mb-4">
+              <LogoID size={30} />
             </div>
             <p className="text-[#888888] text-sm leading-relaxed mb-6">
               Más que un corte. Una experiencia premium que transforma tu imagen.
