@@ -1,0 +1,16 @@
+{
+  "name": "IDBARBER — Construimos Presencia",
+  "short_name": "IDBARBER",
+  "description": "Barbería premium en Bogotá. Reserva tu cita online.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "categories": ["lifestyle", "shopping"],
+  "lang": "es-CO"
+}

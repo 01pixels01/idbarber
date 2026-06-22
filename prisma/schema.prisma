@@ -1,0 +1,159 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  CLIENT
+  BARBER
+  ADMIN
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  clerkId      String   @unique
+  email        String   @unique
+  name         String
+  phone        String?
+  birthdate    DateTime?
+  role         Role     @default(CLIENT)
+  avatarUrl    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  appointments Appointment[] @relation("ClientAppointments")
+  barberSlots  Appointment[] @relation("BarberAppointments")
+  reviews      Review[]
+  orders       Order[]
+  loyaltyPoints LoyaltyPoint[]
+  barberProfile BarberProfile?
+}
+
+model BarberProfile {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio          String?
+  specialties  String[]
+  experience   Int      // years
+  isActive     Boolean  @default(true)
+  workDays     Int[]    // 0=Sun..6=Sat
+  workStart    String   @default("08:00")
+  workEnd      String   @default("18:00")
+  slotDuration Int      @default(30) // minutes
+}
+
+model Service {
+  id           String   @id @default(cuid())
+  name         String
+  description  String?
+  price        Int      // COP cents
+  duration     Int      // minutes
+  imageUrl     String?
+  isActive     Boolean  @default(true)
+  category     String?
+  appointments Appointment[]
+  createdAt    DateTime @default(now())
+}
+
+model Appointment {
+  id         String            @id @default(cuid())
+  clientId   String
+  client     User              @relation("ClientAppointments", fields: [clientId], references: [id])
+  barberId   String
+  barber     User              @relation("BarberAppointments", fields: [barberId], references: [id])
+  serviceId  String
+  service    Service           @relation(fields: [serviceId], references: [id])
+  date       DateTime
+  startTime  String
+  endTime    String
+  status     AppointmentStatus @default(PENDING)
+  notes      String?
+  totalPrice Int
+  review     Review?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Review {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  appointmentId String      @unique
+  appointment   Appointment @relation(fields: [appointmentId], references: [id])
+  rating        Int         // 1-5
+  comment       String?
+  createdAt     DateTime    @default(now())
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  price       Int      // COP
+  stock       Int      @default(0)
+  imageUrl    String?
+  images      String[]
+  category    String
+  brand       String?
+  sku         String?  @unique
+  isActive    Boolean  @default(true)
+  orderItems  OrderItem[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id         String      @id @default(cuid())
+  userId     String
+  user       User        @relation(fields: [userId], references: [id])
+  items      OrderItem[]
+  total      Int
+  status     OrderStatus @default(PENDING)
+  address    String?
+  stripeId   String?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  unitPrice Int
+}
+
+model LoyaltyPoint {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  points      Int
+  description String
+  type        String   // EARN | REDEEM
+  createdAt   DateTime @default(now())
+}

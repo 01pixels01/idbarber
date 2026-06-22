@@ -1,0 +1,33 @@
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="40%" cy="30%" r="80%"><stop offset="0%" stop-color="#0D0D0D"/><stop offset="100%" stop-color="#060606"/></radialGradient>
+    <radialGradient id="shine" cx="35%" cy="30%" r="45%"><stop offset="0%" stop-color="#fff" stop-opacity="0.06"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <rect width="600" height="600" fill="url(#shine)"/>
+  <!-- Marble surface line -->
+  <line x1="0" y1="420" x2="600" y2="420" stroke="#1A1A1A" stroke-width="1"/>
+  <rect x="0" y="420" width="600" height="180" fill="#080808"/>
+  <!-- Pomade jar -->
+  <ellipse cx="300" cy="310" rx="100" ry="30" fill="#1A1A1A"/>
+  <rect x="200" y="285" width="200" height="130" rx="8" fill="#141414"/>
+  <ellipse cx="300" cy="285" rx="100" ry="30" fill="#222"/>
+  <ellipse cx="300" cy="285" rx="80" ry="22" fill="#1A1A1A"/>
+  <!-- Label on jar -->
+  <rect x="230" y="305" width="140" height="80" rx="4" fill="#0A0A0A" opacity="0.8"/>
+  <text x="300" y="335" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#D4AF37" opacity="0.9" letter-spacing="4">IDBARBER</text>
+  <line x1="240" y1="342" x2="360" y2="342" stroke="#D4AF37" stroke-width="0.5" opacity="0.4"/>
+  <text x="300" y="358" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#888" letter-spacing="2">POMADA MATE</text>
+  <text x="300" y="372" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#555" letter-spacing="1">STRONG HOLD</text>
+  <!-- Gold lid shine -->
+  <ellipse cx="280" cy="278" rx="25" ry="8" fill="#D4AF37" opacity="0.08"/>
+  <!-- Shadow -->
+  <ellipse cx="300" cy="418" rx="110" ry="12" fill="#000" opacity="0.5"/>
+  <!-- Labels -->
+  <text x="300" y="480" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#D4AF37" opacity="0.7" letter-spacing="3">POMADA MATE PREMIUM · 600 × 600 px</text>
+  <text x="300" y="500" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555" letter-spacing="2">Frasco en mármol negro · luz dramática · hiperrealista</text>
+  <rect x="20" y="20" width="24" height="2" fill="#D4AF37" opacity="0.4"/><rect x="20" y="20" width="2" height="24" fill="#D4AF37" opacity="0.4"/>
+  <rect x="556" y="20" width="24" height="2" fill="#D4AF37" opacity="0.4"/><rect x="578" y="20" width="2" height="24" fill="#D4AF37" opacity="0.4"/>
+  <rect x="20" y="578" width="24" height="2" fill="#D4AF37" opacity="0.4"/><rect x="20" y="556" width="2" height="24" fill="#D4AF37" opacity="0.4"/>
+  <rect x="556" y="578" width="24" height="2" fill="#D4AF37" opacity="0.4"/><rect x="578" y="556" width="2" height="24" fill="#D4AF37" opacity="0.4"/>
+</svg>

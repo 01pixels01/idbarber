@@ -1,0 +1,15 @@
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs><radialGradient id="bg" cx="50%" cy="40%" r="70%"><stop offset="0%" stop-color="#1A1200"/><stop offset="100%" stop-color="#0A0A0A"/></radialGradient></defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <ellipse cx="300" cy="240" rx="110" ry="120" fill="#1A1A1A"/>
+  <ellipse cx="300" cy="330" rx="90" ry="60" fill="#111" opacity="0.8"/>
+  <!-- Razor -->
+  <rect x="360" y="200" width="5" height="80" rx="2" fill="#D4AF37" opacity="0.8" transform="rotate(-30,362,240)"/>
+  <rect x="355" y="195" width="15" height="8" rx="2" fill="#888" opacity="0.7" transform="rotate(-30,362,240)"/>
+  <text x="300" y="500" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#D4AF37" opacity="0.7" letter-spacing="3">BARBA PREMIUM · 600 × 600 px</text>
+  <text x="300" y="520" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#555" letter-spacing="2">Hot towel shave · navaja clásica · hiperrealista</text>
+  <rect x="20" y="20" width="24" height="2" fill="#D4AF37" opacity="0.4"/><rect x="20" y="20" width="2" height="24" fill="#D4AF37" opacity="0.4"/>
+  <rect x="556" y="20" width="24" height="2" fill="#D4AF37" opacity="0.4"/><rect x="578" y="20" width="2" height="24" fill="#D4AF37" opacity="0.4"/>
+  <rect x="20" y="578" width="24" height="2" fill="#D4AF37" opacity="0.4"/><rect x="20" y="556" width="2" height="24" fill="#D4AF37" opacity="0.4"/>
+  <rect x="556" y="578" width="24" height="2" fill="#D4AF37" opacity="0.4"/><rect x="578" y="556" width="2" height="24" fill="#D4AF37" opacity="0.4"/>
+</svg>
