@@ -2,7 +2,6 @@ import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { z } from "zod";
-import type { PrismaClient } from "@prisma/client";
 
 const orderSchema = z.object({
   items: z.array(
@@ -89,7 +88,7 @@ export async function POST(req: NextRequest) {
     const shipping = total >= 100000 ? 0 : 12000;
 
     // Crear la orden en transacción
-    const order = await prisma.$transaction(async (tx: Omit<PrismaClient, "$connect" | "$disconnect" | "$on" | "$transaction" | "$use" | "$extends">) => {
+    const order = await prisma.$transaction(async (tx) => {
       const newOrder = await tx.order.create({
         data: {
           userId: dbUser.id,
