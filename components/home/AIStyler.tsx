@@ -104,9 +104,15 @@ export default function AIStyler() {
 
       clearInterval(interval);
 
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Error del servidor");
+      // Lectura robusta: si la respuesta no es JSON válido, no crashea
+      const contentType = res.headers.get("content-type") ?? "";
+      const isJson = contentType.includes("application/json");
+
+      if (!res.ok || !isJson) {
+        const data = isJson ? await res.json().catch(() => null) : null;
+        throw new Error(
+          data?.error ?? "El análisis con IA no está disponible. Elige tu forma facial manualmente abajo."
+        );
       }
 
       const result: AIResult = await res.json();
@@ -116,7 +122,11 @@ export default function AIStyler() {
       setTimeout(() => setPhase("result"), 400);
     } catch (err) {
       clearInterval(interval);
-      setError(err instanceof Error ? err.message : "Error al analizar la imagen");
+      setError(
+        err instanceof Error
+          ? err.message
+          : "El análisis con IA no está disponible. Elige tu forma facial manualmente abajo."
+      );
       setPhase("idle");
       setIsAIAnalysis(false);
     }
