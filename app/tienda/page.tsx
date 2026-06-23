@@ -17,16 +17,26 @@ export default function TiendaPage() {
     <>
       <Navbar />
       <CartDrawer />
-      <main className="min-h-screen pt-24 pb-16">
+      <main className="min-h-screen pb-20 bg-[#080808]">
         {/* Header */}
-        <div className="text-center py-16 px-4">
-          <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-xs font-medium px-4 py-1.5 rounded-full mb-4">
-            Tienda Online
+        <div className="flex flex-col items-center text-center pt-36 sm:pt-40 pb-16 px-4">
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full"
+            style={{ background: "rgba(212,175,55,0.1)", border: "1px solid rgba(212,175,55,0.25)" }}>
+            <span style={{ color: "#D4AF37", fontFamily: "var(--font-barlow)", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase" }}>
+              Tienda Online
+            </span>
           </div>
-          <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">
-            Productos <span className="text-gold-shimmer">premium</span>
+          <h1
+            className="uppercase leading-none mb-5"
+            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(48px,8vw,100px)", letterSpacing: "0.02em", color: "#FFFFFF" }}
+          >
+            PRODUCTOS{" "}
+            <span style={{ WebkitTextStroke: "1.5px #D4AF37", color: "transparent" }}>PREMIUM</span>
           </h1>
-          <p className="text-[#888888] text-lg max-w-xl mx-auto">
+          <p
+            className="max-w-xl mx-auto"
+            style={{ color: "#999999", fontFamily: "var(--font-barlow)", fontWeight: 300, fontSize: "clamp(15px,1.6vw,19px)", lineHeight: 1.7 }}
+          >
             Los mismos productos que usan nuestros barberos. Cuida tu imagen en casa como un profesional.
           </p>
         </div>
