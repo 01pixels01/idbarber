@@ -12,8 +12,8 @@ export const IMAGES = {
   barbers: [
     {
       id: "barber-1",
-      src: "/images/barbers/barber-1.svg",
-      alt: "Andrés Castro — Master Barber IDBARBER",
+      src: "/images/barbers/barber-1.png",
+      alt: "Jair Cortes — Master Barber IDBARBER",
       width: 800,
       height: 1000,
       aiPrompt:
@@ -21,8 +21,8 @@ export const IMAGES = {
     },
     {
       id: "barber-2",
-      src: "/images/barbers/barber-2.svg",
-      alt: "Miguel Torres — Fade Specialist IDBARBER",
+      src: "/images/barbers/barber-2.png",
+      alt: "Ricardo Cortes — Senior Barber IDBARBER",
       width: 800,
       height: 1000,
       aiPrompt:
@@ -30,8 +30,8 @@ export const IMAGES = {
     },
     {
       id: "barber-3",
-      src: "/images/barbers/barber-3.svg",
-      alt: "Carlos Ruiz — Beard Artist IDBARBER",
+      src: "/images/barbers/barber-3.png",
+      alt: "Alberto Cortes — Master Barber IDBARBER",
       width: 800,
       height: 1000,
       aiPrompt:
@@ -39,8 +39,8 @@ export const IMAGES = {
     },
     {
       id: "barber-4",
-      src: "/images/barbers/barber-4.svg",
-      alt: "Juan Pérez — Color Specialist IDBARBER",
+      src: "/images/barbers/barber-4.png",
+      alt: "Miguel Rodriguez — Barber Pro IDBARBER",
       width: 800,
       height: 1000,
       aiPrompt:
@@ -49,7 +49,7 @@ export const IMAGES = {
   ],
   services: {
     fade: {
-      src: "/images/services/fade.svg",
+      src: "/images/services/fade.png",
       alt: "Corte Fade — IDBARBER",
       width: 600,
       height: 600,
@@ -57,7 +57,7 @@ export const IMAGES = {
         "Hyperrealistic close-up of a perfect skin fade haircut on a Colombian man, sharp fade line, dark studio background, dramatic side lighting highlighting the texture, 8K macro photography",
     },
     barba: {
-      src: "/images/services/barba.svg",
+      src: "/images/services/barba.png",
       alt: "Arreglo de Barba — IDBARBER",
       width: 600,
       height: 600,
@@ -65,7 +65,7 @@ export const IMAGES = {
         "Hyperrealistic close-up of a professional beard trim with straight razor, lather foam, Colombian man with well-groomed beard, dramatic lighting, black background, golden bokeh, 8K",
     },
     corteClasico: {
-      src: "/images/services/corte-clasico.svg",
+      src: "/images/services/corte-clasico.png",
       alt: "Corte Clásico — IDBARBER",
       width: 600,
       height: 600,
@@ -73,7 +73,7 @@ export const IMAGES = {
         "Hyperrealistic scene of a barber giving a classic haircut in a premium barbershop, scissor over comb technique, client in leather chair, cinematic lighting, moody dark background, 8K",
     },
     vip: {
-      src: "/images/services/vip.svg",
+      src: "/images/services/vip.png",
       alt: "Experiencia VIP — IDBARBER",
       width: 600,
       height: 600,
@@ -134,7 +134,7 @@ export const IMAGES = {
   gallery: [
     {
       id: "gallery-1",
-      src: "/images/gallery/gallery-1.svg",
+      src: "/images/gallery/gallery-1.png",
       alt: "Barbero trabajando en IDBARBER",
       width: 1200,
       height: 900,
