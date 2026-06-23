@@ -277,9 +277,14 @@ export default function CheckoutClient() {
 
           <div className="space-y-3 mb-5">
             {state.items.map((item) => (
-              <div key={item.id} className="flex gap-3">
-                <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] flex items-center justify-center text-lg shrink-0">
-                  {item.imageUrl}
+              <div key={item.id} className="flex gap-3 items-center">
+                <div className="w-11 h-11 rounded-lg bg-[#1A1A1A] border border-white/5 overflow-hidden shrink-0 relative">
+                  {item.imageUrl && item.imageUrl.startsWith("/") ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="flex items-center justify-center w-full h-full text-lg">{item.imageUrl || "🧴"}</span>
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-white text-sm font-medium truncate">{item.name}</p>

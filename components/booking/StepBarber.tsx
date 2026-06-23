@@ -7,10 +7,10 @@ import type { BookingData } from "./BookingFlow";
 
 const barbers = [
   { id: 0, name: "Sin preferencia", role: "Cualquier barbero disponible", avatar: "🎲", rating: null, specialties: [] },
-  { id: 1, name: "Carlos Mendoza", role: "Master Barber · 12 años", avatar: "CM", rating: 4.9, specialties: ["Fade", "Clásico"] },
-  { id: 2, name: "Andrés García", role: "Senior Barber · 8 años", avatar: "AG", rating: 4.8, specialties: ["Barba", "Cejas"] },
-  { id: 3, name: "Miguel Torres", role: "Style Artist · 6 años", avatar: "MT", rating: 4.9, specialties: ["Fade", "Diseños"] },
-  { id: 4, name: "David Ruiz", role: "Barber Pro · 10 años", avatar: "DR", rating: 4.7, specialties: ["Clásico", "VIP"] },
+  { id: 1, name: "Jair Cortes", role: "Master Barber · 12 años", avatar: "JC", rating: 4.9, specialties: ["Fade", "Clásico"] },
+  { id: 2, name: "Ricardo Cortes", role: "Senior Barber · 12 años", avatar: "RC", rating: 4.8, specialties: ["Barba", "Cejas"] },
+  { id: 3, name: "Alberto Cortes", role: "Master Barber · 30 años", avatar: "AC", rating: 4.9, specialties: ["Fade", "Diseños"] },
+  { id: 4, name: "Miguel Rodriguez", role: "Barber Pro · 10 años", avatar: "MR", rating: 4.7, specialties: ["Clásico", "VIP"] },
 ];
 
 interface Props {

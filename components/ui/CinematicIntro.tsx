@@ -30,7 +30,7 @@ export default function CinematicIntro({ onComplete }: { onComplete: () => void 
           // Swipe up exit
           gsap.to(containerRef.current, {
             y: "-100%",
-            duration: 1,
+            duration: 0.7,
             ease: "power4.inOut",
             onComplete: () => {
               setVisible(false);
@@ -43,24 +43,17 @@ export default function CinematicIntro({ onComplete }: { onComplete: () => void 
       // Start invisible
       gsap.set([line1Ref.current, line2Ref.current, line3Ref.current, logoRef.current], {
         opacity: 0,
-        y: 40,
+        y: 24,
       });
 
-      // Line 1 in
-      tl.to(line1Ref.current, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 0.6)
-        // Line 2 in
-        .to(line2Ref.current, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, 1.4)
-        // Dramatic pause
-        .to({}, { duration: 0.8 })
-        // Lines fade, line3 in
-        .to([line1Ref.current, line2Ref.current], { opacity: 0.15, duration: 0.6, ease: "power2.out" })
-        .to(line3Ref.current, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.3")
-        // Pause
-        .to({}, { duration: 1.2 })
-        // Logo reveal
-        .to(logoRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" })
-        // Final pause before exit
-        .to({}, { duration: 0.9 });
+      // Secuencia rápida y sutil (~3s total)
+      tl.to(line1Ref.current, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2)
+        .to(line2Ref.current, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.55)
+        .to({}, { duration: 0.35 })
+        .to([line1Ref.current, line2Ref.current], { opacity: 0.15, duration: 0.4, ease: "power2.out" })
+        .to(line3Ref.current, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.2")
+        .to(logoRef.current, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.1")
+        .to({}, { duration: 0.5 });
     });
 
     return () => ctx.revert();

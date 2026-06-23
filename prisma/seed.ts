@@ -27,10 +27,10 @@ const services = [
 // Barberos — IDs deben coincidir con components/booking/StepBarber.tsx
 const barbers = [
   { id: "0", name: "Sin preferencia", email: "pool@idbarber.co", bio: "Asignamos el barbero disponible más pronto.", specialties: ["General"], experience: 0 },
-  { id: "1", name: "Carlos Mendoza", email: "carlos@idbarber.co", bio: "Master Barber especialista en fades y cortes clásicos.", specialties: ["Fade", "Clásico"], experience: 12 },
-  { id: "2", name: "Andrés García", email: "andres@idbarber.co", bio: "Senior Barber experto en perfilado de barba y cejas.", specialties: ["Barba", "Cejas"], experience: 8 },
-  { id: "3", name: "Miguel Torres", email: "miguel@idbarber.co", bio: "Style Artist especializado en fades y diseños.", specialties: ["Fade", "Diseños"], experience: 6 },
-  { id: "4", name: "David Ruiz", email: "david@idbarber.co", bio: "Barber Pro con experiencia en clásicos y experiencia VIP.", specialties: ["Clásico", "VIP"], experience: 10 },
+  { id: "1", name: "Jair Cortes", email: "jair@idbarber.co", bio: "Master Barber especialista en fades y cortes clásicos.", specialties: ["Fade", "Clásico"], experience: 12 },
+  { id: "2", name: "Ricardo Cortes", email: "ricardo@idbarber.co", bio: "Senior Barber experto en perfilado de barba y cejas.", specialties: ["Barba", "Cejas"], experience: 12 },
+  { id: "3", name: "Alberto Cortes", email: "alberto@idbarber.co", bio: "Master Barber con 30 años de trayectoria, fades y diseños.", specialties: ["Fade", "Diseños"], experience: 30 },
+  { id: "4", name: "Miguel Rodriguez", email: "miguel@idbarber.co", bio: "Barber Pro con experiencia en clásicos y experiencia VIP.", specialties: ["Clásico", "VIP"], experience: 10 },
 ];
 
 // Productos — IDs deben coincidir con lib/products.ts

@@ -221,10 +221,10 @@ function ServiceCard({ service: s, large, onHover }: ServiceCardProps) {
         </div>
       )}
 
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-end p-7">
+      {/* Content — centrado */}
+      <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-7">
         {/* Price chip */}
-        <div className="inline-flex items-center gap-2 mb-3 self-start">
+        <div className="inline-flex items-center gap-2 mb-3">
           <span className="text-[#D4AF37] text-2xl font-bold" style={{ fontFamily: "var(--font-bebas)", letterSpacing: "0.05em" }}>
             {fmt(s.price)}
           </span>
@@ -247,7 +247,7 @@ function ServiceCard({ service: s, large, onHover }: ServiceCardProps) {
         </h3>
 
         {/* Tagline */}
-        <p className="text-[#888888] text-sm leading-relaxed max-w-xs mb-5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
+        <p className="text-[#888888] text-sm leading-relaxed max-w-xs mx-auto mb-5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
           {s.description}
         </p>
 
