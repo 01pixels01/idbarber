@@ -19,7 +19,7 @@ export default function TiendaPage() {
       <CartDrawer />
       <main className="min-h-screen pb-20 bg-[#080808]">
         {/* Header */}
-        <div className="flex flex-col items-center text-center pt-36 sm:pt-40 pb-16 px-4">
+        <div className="flex flex-col items-center text-center px-4" style={{ paddingTop: "170px", paddingBottom: "64px" }}>
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full"
             style={{ background: "rgba(212,175,55,0.1)", border: "1px solid rgba(212,175,55,0.25)" }}>
             <span style={{ color: "#D4AF37", fontFamily: "var(--font-barlow)", fontSize: "11px", letterSpacing: "0.3em", textTransform: "uppercase" }}>
