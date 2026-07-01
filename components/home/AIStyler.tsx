@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { Upload, Cpu, Sparkles, ArrowRight } from "lucide-react";
 
 type FaceShape = "oval" | "square" | "round" | "heart";
@@ -155,8 +156,8 @@ export default function AIStyler() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-xs font-medium px-4 py-2 rounded-full mb-6">
-            <Cpu className="w-3 h-3" />
-            Inteligencia Artificial
+            <Image src="/images/idbot.png" alt="IDBOT" width={16} height={16} className="rounded-full" />
+            IDBOT · Inteligencia Artificial
           </div>
           <h2
             className="text-white leading-none uppercase mb-4"
@@ -327,26 +328,36 @@ export default function AIStyler() {
             </div>
           ) : phase === "idle" ? (
             <div className="hidden lg:block">
-              {/* Decorative AI visualization */}
-              <div className="relative h-full min-h-[400px] border border-white/5 rounded-2xl overflow-hidden flex items-center justify-center">
-                <div className="absolute inset-0 bg-[#0A0A0A]" />
+              {/* IDBOT — asistente de IA */}
+              <div className="relative h-full min-h-[420px] border border-[#D4AF37]/10 rounded-2xl overflow-hidden flex flex-col items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] to-[#060606]" />
+                {/* Glow detrás de IDBOT */}
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#D4AF37]/10 rounded-full blur-[80px]" />
                 {/* Scan lines */}
                 {[...Array(6)].map((_, i) => (
                   <div
                     key={i}
                     className="absolute left-0 right-0 h-px bg-[#D4AF37]/8"
-                    style={{ top: `${15 + i * 14}%`, animationDelay: `${i * 0.2}s` }}
+                    style={{ top: `${15 + i * 14}%` }}
                   />
                 ))}
-                <div className="text-center z-10">
-                  <div className="relative w-28 h-28 mx-auto mb-6">
-                    <div className="absolute inset-0 rounded-full border border-[#D4AF37]/15 animate-ping" />
-                    <div className="absolute inset-3 rounded-full border border-[#D4AF37]/25" />
-                    <div className="absolute inset-6 rounded-full border border-[#D4AF37]/40" />
-                    <Cpu className="absolute inset-0 m-auto w-8 h-8 text-[#D4AF37]/60" />
-                  </div>
-                  <p className="text-[#555] text-xs tracking-[0.3em] uppercase" style={{ fontFamily: "var(--font-barlow)" }}>
-                    IA lista para analizar
+                {/* IDBOT flotando */}
+                <div className="relative z-10 animate-float">
+                  <Image
+                    src="/images/idbot.png"
+                    alt="IDBOT — Asistente de IA de IDBARBER"
+                    width={220}
+                    height={330}
+                    className="drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+                    priority
+                  />
+                </div>
+                <div className="relative z-10 text-center mt-4">
+                  <p className="text-white text-sm font-semibold tracking-[0.15em] uppercase" style={{ fontFamily: "var(--font-barlow)" }}>
+                    Hola, soy IDBOT
+                  </p>
+                  <p className="text-[#888] text-xs mt-1" style={{ fontFamily: "var(--font-barlow)" }}>
+                    Sube tu foto y encuentro tu estilo perfecto
                   </p>
                 </div>
               </div>
