@@ -9,10 +9,11 @@
 .font-bebas { font-family: var(--font-bebas); }
 .font-barlow { font-family: var(--font-barlow); }
 
+/* NO resetear margin/padding aquí: al ser CSS sin @layer, sobrescribía TODAS
+   las utilidades de Tailwind (mx-auto, px-*, py-*) rompiendo el centrado y el
+   espaciado en todo el sitio. Tailwind Preflight ya hace el reset correctamente. */
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 html {
