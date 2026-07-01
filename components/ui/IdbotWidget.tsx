@@ -3,7 +3,8 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { X, Upload, Sparkles, ArrowRight, Home, MessageCircle, Loader2, ShieldCheck } from "lucide-react";
+import { useUser } from "@clerk/nextjs";
+import { X, Upload, Sparkles, ArrowRight, Home, MessageCircle, Loader2, ShieldCheck, Lock, UserPlus, LogIn } from "lucide-react";
 
 // WhatsApp de IDBARBER (formato internacional sin + ni espacios)
 const WHATSAPP = "573175324098";
@@ -45,6 +46,7 @@ const shapeLabels: Record<Shape, string> = { oval: "Oval", square: "Cuadrado", r
 type Phase = "intro" | "analyzing" | "result";
 
 export default function IdbotWidget() {
+  const { isSignedIn } = useUser();
   const [open, setOpen] = useState(false);
   const [phase, setPhase] = useState<Phase>("intro");
   const [consent, setConsent] = useState(false);
@@ -127,6 +129,48 @@ export default function IdbotWidget() {
           </div>
 
           <div className="p-4 max-h-[70vh] overflow-y-auto">
+            {/* GATE — requiere cuenta para chatear con IDBOT */}
+            {!isSignedIn ? (
+              <div className="space-y-4">
+                <div className="bg-white/4 rounded-xl rounded-tl-none p-3">
+                  <p className="text-white/90 text-sm leading-relaxed">
+                    ¡Hola! 👋 Soy <span className="text-[#D4AF37] font-semibold">IDBOT</span>. Para asesorarte con tu estilo,{" "}
+                    <span className="text-white font-semibold">crea tu cuenta o inicia sesión</span>. Así guardo tus recomendaciones y agilizamos tu reserva.
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-center py-3">
+                  <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/25 flex items-center justify-center mb-3">
+                    <Lock className="w-6 h-6 text-[#D4AF37]" />
+                  </div>
+                  <p className="text-white text-sm font-semibold">Acceso exclusivo</p>
+                  <p className="text-[#888] text-xs text-center mt-1">Regístrate en segundos y desbloquea a tu asesor de imagen.</p>
+                </div>
+
+                <Link href="/registro" onClick={() => setOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#D4AF37] text-black text-xs font-bold tracking-[0.15em] uppercase hover:shadow-[0_0_24px_rgba(212,175,55,0.4)] transition-all"
+                  style={{ fontFamily: "var(--font-barlow)" }}>
+                  <UserPlus className="w-4 h-4" /> Crear cuenta
+                </Link>
+                <Link href="/login" onClick={() => setOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#D4AF37]/5 transition-all"
+                  style={{ fontFamily: "var(--font-barlow)" }}>
+                  <LogIn className="w-4 h-4" /> Ya tengo cuenta
+                </Link>
+
+                {/* Domicilio disponible sin cuenta */}
+                <a href={waLink("Hola IDBARBER, quiero información sobre corte a domicilio 🏠✂️")} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 rounded-xl border border-[#D4AF37]/25 bg-[#D4AF37]/5 hover:bg-[#D4AF37]/10 transition-colors">
+                  <Home className="w-5 h-5 text-[#D4AF37] shrink-0" />
+                  <div className="flex-1">
+                    <p className="text-white text-xs font-semibold">También vamos a tu casa 🏠</p>
+                    <p className="text-[#888] text-[11px]">Corte a domicilio · pídelo por WhatsApp</p>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+                </a>
+              </div>
+            ) : (
+              <>
             {/* INTRO */}
             {phase === "intro" && (
               <div className="space-y-4">
@@ -230,6 +274,8 @@ export default function IdbotWidget() {
                   </button>
                 </div>
               </div>
+            )}
+              </>
             )}
           </div>
         </div>
