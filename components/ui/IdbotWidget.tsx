@@ -120,22 +120,28 @@ export default function IdbotWidget() {
             <span className="absolute -bottom-1.5 right-5 w-3 h-3 bg-[#0A0A0A] border-r border-b border-[#D4AF37]/40 rotate-45" />
           </div>
 
-          {/* Botón IDBOT */}
+          {/* Botón IDBOT — mascota a la derecha con glow, texto a la izquierda */}
           <button
             onClick={() => setOpen(true)}
             aria-label="Abrir IDBOT, asesor de imagen"
-            className="idbot-btn relative flex items-center gap-2 pl-2 pr-4 py-2 rounded-full bg-[#0A0A0A] border border-[#D4AF37]/50 shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:border-[#D4AF37] hover:scale-105 transition-transform duration-300 group"
+            className="idbot-btn relative flex items-center gap-3 pl-5 pr-3 py-2.5 rounded-2xl overflow-hidden border border-[#D4AF37]/40 shadow-[0_10px_34px_rgba(0,0,0,0.55)] hover:border-[#D4AF37] hover:scale-[1.03] transition-all duration-300 group"
+            style={{ background: "linear-gradient(135deg, #141210 0%, #0A0A0A 60%)" }}
           >
-            {/* Anillos de pulso suave */}
-            <span className="idbot-ping absolute inset-0 rounded-full border border-[#D4AF37]/40 pointer-events-none" />
-            <span className="idbot-ping absolute inset-0 rounded-full border border-[#D4AF37]/30 pointer-events-none" style={{ animationDelay: "1s" }} />
-            <span className="absolute inset-0 rounded-full bg-[#D4AF37]/15 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
-            <span className="relative w-9 h-9 rounded-full overflow-hidden bg-[#111] flex items-center justify-center">
-              <Image src="/images/idbot.png" alt="IDBOT" width={36} height={36} className="object-contain" />
-              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-[#0A0A0A]" />
+            {/* Glow dorado detrás de la mascota */}
+            <span className="absolute right-2 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-[#D4AF37]/25 blur-2xl pointer-events-none" />
+
+            {/* Texto CTA a la izquierda */}
+            <span
+              className="relative text-[#E8C86A] text-xs font-bold uppercase leading-tight text-left"
+              style={{ fontFamily: "var(--font-barlow)", letterSpacing: "0.18em" }}
+            >
+              Consultar con<br />IDBOT
             </span>
-            <span className="relative text-white text-xs font-semibold" style={{ fontFamily: "var(--font-barlow)", letterSpacing: "0.05em" }}>
-              Asesor IDBOT
+
+            {/* Mascota a la derecha */}
+            <span className="relative w-11 h-11 flex items-center justify-center shrink-0">
+              <Image src="/images/idbot.png" alt="IDBOT" width={44} height={44} className="object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]" />
+              <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-[#0A0A0A]" />
             </span>
           </button>
 
