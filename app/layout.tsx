@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { CartProvider } from "@/context/CartContext";
 import PremiumCursor from "@/components/ui/PremiumCursor";
+import IdbotWidget from "@/components/ui/IdbotWidget";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-bebas", display: "swap" });
@@ -109,6 +110,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CartProvider>
             <PremiumCursor />
             {children}
+            <IdbotWidget />
           </CartProvider>
         </body>
       </html>
