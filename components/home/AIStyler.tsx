@@ -152,9 +152,9 @@ export default function AIStyler() {
         />
       </div>
 
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative" style={{ maxWidth: "72rem", marginLeft: "auto", marginRight: "auto", paddingLeft: "1rem", paddingRight: "1rem" }}>
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="mb-16" style={{ textAlign: "center" }}>
           <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-xs font-medium px-4 py-2 rounded-full mb-6">
             <Image src="/images/idbot.png" alt="IDBOT" width={16} height={16} className="rounded-full" />
             IDBOT · Inteligencia Artificial
