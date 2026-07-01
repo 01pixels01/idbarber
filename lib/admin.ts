@@ -23,6 +23,52 @@ function startOfMonth() {
   return new Date(d.getFullYear(), d.getMonth(), 1);
 }
 
+export interface AgendaAppointment {
+  id: string;
+  client: string;
+  service: string;
+  barber: string;
+  date: string; // ISO yyyy-mm-dd
+  time: string; // HH:mm
+  duration: number; // minutos
+  status: string;
+}
+
+/** Citas para la agenda (rango: semana pasada hasta +5 semanas). */
+export async function getAgendaAppointments(): Promise<AgendaAppointment[]> {
+  try {
+    const from = new Date();
+    from.setDate(from.getDate() - 7);
+    from.setHours(0, 0, 0, 0);
+    const to = new Date();
+    to.setDate(to.getDate() + 35);
+
+    const appts = await prisma.appointment.findMany({
+      where: { date: { gte: from, lte: to }, status: { notIn: ["CANCELLED", "NO_SHOW"] } },
+      include: {
+        service: { select: { name: true, duration: true } },
+        client: { select: { name: true } },
+        barber: { select: { name: true } },
+      },
+      orderBy: [{ date: "asc" }, { startTime: "asc" }],
+    });
+
+    return appts.map((a) => ({
+      id: a.id,
+      client: a.client?.name ?? "Cliente",
+      service: a.service?.name ?? "Servicio",
+      barber: a.barber?.name ?? "—",
+      date: a.date.toISOString().split("T")[0],
+      time: a.startTime,
+      duration: a.service?.duration ?? 30,
+      status: a.status.toLowerCase(),
+    }));
+  } catch (e) {
+    console.error("[getAgendaAppointments]", e);
+    return [];
+  }
+}
+
 export interface DashboardData {
   revenueMonth: string;
   revenueMonthRaw: number;
