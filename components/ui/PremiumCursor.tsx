@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 export default function PremiumCursor() {
@@ -8,8 +8,17 @@ export default function PremiumCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
   const topBladeRef = useRef<SVGGElement>(null);
   const bottomBladeRef = useRef<SVGGElement>(null);
+  const [enabled, setEnabled] = useState(false);
+
+  // Solo activar con mouse fino y sin reduced-motion (accesibilidad)
+  useEffect(() => {
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    const noReduce = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+    setEnabled(fine && noReduce);
+  }, []);
 
   useEffect(() => {
+    if (!enabled) return;
     const scissor = scissorRef.current;
     const ring = ringRef.current;
     if (!scissor || !ring) return;
@@ -57,7 +66,9 @@ export default function PremiumCursor() {
       window.removeEventListener("mousedown", snip);
       cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
     <>

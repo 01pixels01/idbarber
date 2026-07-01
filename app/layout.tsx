@@ -58,6 +58,11 @@ export const metadata: Metadata = {
     images: ["/images/og-image.svg"],
   },
   manifest: "/manifest.json",
+  icons: {
+    icon: "/images/idbot.png",
+    apple: "/images/idbot.png",
+    shortcut: "/images/idbot.png",
+  },
   robots: {
     index: true,
     follow: true,

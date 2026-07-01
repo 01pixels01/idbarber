@@ -29,30 +29,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Premium cursor */
-* { cursor: none !important; }
-.cursor-dot {
-  width: 6px; height: 6px;
-  background: #D4AF37;
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 99999;
-  transition: transform 0.1s ease;
-  mix-blend-mode: difference;
+/* Cursor de tijeras — SOLO en dispositivos con mouse fino y sin preferencia de menos movimiento.
+   En touch/tablet y para usuarios con reduced-motion se conserva el cursor normal (accesibilidad WCAG 2.2). */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  * { cursor: none !important; }
 }
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(212,175,55,0.5);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 99998;
-  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
-}
-a:hover ~ .cursor-ring, button:hover ~ .cursor-ring { transform: scale(1.6); opacity: 0.6; }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0A0A0A; }

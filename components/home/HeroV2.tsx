@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LogoID from "@/components/ui/LogoID";
 
 gsap.registerPlugin(ScrollTrigger);
+
+interface Particle { size: number; left: number; top: number; opacity: number; }
 
 export default function HeroV2() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -17,6 +19,19 @@ export default function HeroV2() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  // Partículas solo en cliente (evita hydration mismatch por Math.random)
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 18 }, () => ({
+        size: Math.random() * 3 + 1,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        opacity: Math.random() * 0.4 + 0.05,
+      }))
+    );
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -105,18 +120,18 @@ export default function HeroV2() {
         }}
       />
 
-      {/* Floating particles */}
+      {/* Floating particles — generadas solo en cliente para evitar hydration mismatch */}
       <div ref={particlesRef} className="absolute inset-0 z-[3] pointer-events-none overflow-hidden">
-        {[...Array(18)].map((_, i) => (
+        {particles.map((p, i) => (
           <div
             key={i}
             className="hero-particle absolute rounded-full bg-[#D4AF37]"
             style={{
-              width: Math.random() * 3 + 1 + "px",
-              height: Math.random() * 3 + 1 + "px",
-              left: Math.random() * 100 + "%",
-              top: Math.random() * 100 + "%",
-              opacity: Math.random() * 0.4 + 0.05,
+              width: p.size + "px",
+              height: p.size + "px",
+              left: p.left + "%",
+              top: p.top + "%",
+              opacity: p.opacity,
               filter: "blur(0.5px)",
             }}
           />
