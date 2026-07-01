@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -56,6 +56,20 @@ export default function IdbotWidget() {
 
   const reset = () => { setPhase("intro"); setConsent(false); setError(null); };
 
+  // Letreros rotativos de llamado a la acción
+  const ctas = [
+    "¿Qué corte te queda? ✂️",
+    "Descubre tu estilo ideal ✨",
+    "Asesoría de imagen gratis 🤖",
+    "Sube tu foto y te asesoro 👀",
+  ];
+  const [ctaIdx, setCtaIdx] = useState(0);
+  useEffect(() => {
+    if (open) return;
+    const t = setInterval(() => setCtaIdx((i) => (i + 1) % ctas.length), 3800);
+    return () => clearInterval(t);
+  }, [open, ctas.length]);
+
   const handleFile = async (file: File) => {
     if (!consent) { setError("Primero autoriza el uso de tu imagen."); return; }
     if (!file.type.startsWith("image/")) return;
@@ -92,22 +106,60 @@ export default function IdbotWidget() {
 
   return (
     <>
-      {/* Botón flotante */}
+      {/* Botón flotante con pulso suave + letrero CTA */}
       {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          aria-label="Abrir IDBOT, asesor de imagen"
-          className="fixed bottom-5 right-5 z-[9990] flex items-center gap-2 pl-2 pr-4 py-2 rounded-full bg-[#0A0A0A] border border-[#D4AF37]/40 shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:border-[#D4AF37] transition-all duration-300 group"
-        >
-          <span className="absolute inset-0 rounded-full bg-[#D4AF37]/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
-          <span className="relative w-9 h-9 rounded-full overflow-hidden bg-[#111] flex items-center justify-center">
-            <Image src="/images/idbot.png" alt="IDBOT" width={36} height={36} className="object-contain" />
-            <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-[#0A0A0A]" />
-          </span>
-          <span className="relative text-white text-xs font-semibold" style={{ fontFamily: "var(--font-barlow)", letterSpacing: "0.05em" }}>
-            Asesor IDBOT
-          </span>
-        </button>
+        <div className="fixed bottom-5 right-5 z-[9990] flex flex-col items-end gap-3">
+          {/* Letrero de llamado a la acción */}
+          <div
+            key={ctaIdx}
+            className="idbot-cta relative bg-[#0A0A0A] border border-[#D4AF37]/40 rounded-2xl rounded-br-sm px-4 py-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.5)] max-w-[220px]"
+          >
+            <p className="text-white text-xs font-semibold leading-snug" style={{ fontFamily: "var(--font-barlow)" }}>
+              {ctas[ctaIdx]}
+            </p>
+            <span className="absolute -bottom-1.5 right-5 w-3 h-3 bg-[#0A0A0A] border-r border-b border-[#D4AF37]/40 rotate-45" />
+          </div>
+
+          {/* Botón IDBOT */}
+          <button
+            onClick={() => setOpen(true)}
+            aria-label="Abrir IDBOT, asesor de imagen"
+            className="idbot-btn relative flex items-center gap-2 pl-2 pr-4 py-2 rounded-full bg-[#0A0A0A] border border-[#D4AF37]/50 shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:border-[#D4AF37] hover:scale-105 transition-transform duration-300 group"
+          >
+            {/* Anillos de pulso suave */}
+            <span className="idbot-ping absolute inset-0 rounded-full border border-[#D4AF37]/40 pointer-events-none" />
+            <span className="idbot-ping absolute inset-0 rounded-full border border-[#D4AF37]/30 pointer-events-none" style={{ animationDelay: "1s" }} />
+            <span className="absolute inset-0 rounded-full bg-[#D4AF37]/15 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+            <span className="relative w-9 h-9 rounded-full overflow-hidden bg-[#111] flex items-center justify-center">
+              <Image src="/images/idbot.png" alt="IDBOT" width={36} height={36} className="object-contain" />
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-[#0A0A0A]" />
+            </span>
+            <span className="relative text-white text-xs font-semibold" style={{ fontFamily: "var(--font-barlow)", letterSpacing: "0.05em" }}>
+              Asesor IDBOT
+            </span>
+          </button>
+
+          <style>{`
+            @keyframes idbotBreath {
+              0%, 100% { transform: scale(1); box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
+              50% { transform: scale(1.04); box-shadow: 0 8px 40px rgba(212,175,55,0.25); }
+            }
+            @keyframes idbotPing {
+              0% { transform: scale(1); opacity: 0.7; }
+              100% { transform: scale(1.6); opacity: 0; }
+            }
+            @keyframes idbotCtaIn {
+              0% { opacity: 0; transform: translateY(8px) scale(0.96); }
+              100% { opacity: 1; transform: translateY(0) scale(1); }
+            }
+            .idbot-btn { animation: idbotBreath 3.2s ease-in-out infinite; }
+            .idbot-ping { animation: idbotPing 2.6s ease-out infinite; }
+            .idbot-cta { animation: idbotCtaIn 0.5s ease-out; }
+            @media (prefers-reduced-motion: reduce) {
+              .idbot-btn, .idbot-ping, .idbot-cta { animation: none; }
+            }
+          `}</style>
+        </div>
       )}
 
       {/* Panel */}
