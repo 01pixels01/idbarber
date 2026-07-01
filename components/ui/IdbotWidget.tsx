@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { X, Upload, Sparkles, ArrowRight, Home, MessageCircle, Loader2, ShieldCheck } from "lucide-react";
 
-// WhatsApp para domicilio — reemplazar por el número real de IDBARBER
-const WHATSAPP = "573000000000";
+// WhatsApp de IDBARBER (formato internacional sin + ni espacios)
+const WHATSAPP = "573175324098";
 
 type Shape = "oval" | "square" | "round" | "heart";
 

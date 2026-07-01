@@ -63,7 +63,7 @@ export default function CTA() {
             </Link>
 
             <a
-              href="https://wa.me/573001234567"
+              href="https://wa.me/573175324098?text=Hola%20IDBARBER%2C%20quiero%20reservar%20una%20cita%20%E2%9C%82%EF%B8%8F"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 border border-white/20 text-white px-10 py-5 text-sm font-bold tracking-[0.2em] uppercase backdrop-blur-sm hover:border-[#D4AF37]/50 hover:text-[#D4AF37] transition-all duration-300"
